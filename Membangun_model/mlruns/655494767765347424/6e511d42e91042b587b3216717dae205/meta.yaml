@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/655494767765347424/6e511d42e91042b587b3216717dae205/artifacts
+end_time: 1764904826818
+entry_point_name: ''
+experiment_id: '655494767765347424'
+lifecycle_stage: active
+run_id: 6e511d42e91042b587b3216717dae205
+run_name: RandomForest-Manuallog
+run_uuid: 6e511d42e91042b587b3216717dae205
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1764904811567
+status: 3
+tags: []
+user_id: iibso

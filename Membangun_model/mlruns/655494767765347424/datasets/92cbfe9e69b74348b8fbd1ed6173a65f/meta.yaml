@@ -1,0 +1,17 @@
+digest: cd53790e
+name: dataset
+profile: '{"num_rows": 1669, "num_elements": 26704}'
+schema: '{"mlflow_colspec": [{"type": "long", "name": "Gender", "required": true},
+  {"type": "double", "name": "Age", "required": true}, {"type": "double", "name":
+  "Height", "required": true}, {"type": "double", "name": "Weight", "required": true},
+  {"type": "long", "name": "family_history", "required": true}, {"type": "long", "name":
+  "FAVC", "required": true}, {"type": "double", "name": "FCVC", "required": true},
+  {"type": "double", "name": "NCP", "required": true}, {"type": "long", "name": "CAEC",
+  "required": true}, {"type": "long", "name": "SMOKE", "required": true}, {"type":
+  "double", "name": "CH2O", "required": true}, {"type": "long", "name": "SCC", "required":
+  true}, {"type": "double", "name": "FAF", "required": true}, {"type": "double", "name":
+  "TUE", "required": true}, {"type": "long", "name": "CALC", "required": true}, {"type":
+  "long", "name": "MTRANS", "required": true}]}'
+source: '{"tags": {"mlflow.user": "iibso", "mlflow.source.name": "modelling.py", "mlflow.source.type":
+  "LOCAL"}}'
+source_type: code

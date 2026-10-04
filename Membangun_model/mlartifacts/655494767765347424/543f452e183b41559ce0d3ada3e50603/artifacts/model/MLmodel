@@ -1,0 +1,34 @@
+artifact_path: model
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    predict_fn: predict
+    python_version: 3.10.0
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.5.2
+mlflow_version: 2.19.0
+model_size_bytes: 5077318
+model_uuid: 4ff43478b9e74f6692a1b22b20932569
+run_id: 543f452e183b41559ce0d3ada3e50603
+signature:
+  inputs: '[{"type": "long", "name": "Gender", "required": true}, {"type": "double",
+    "name": "Age", "required": true}, {"type": "double", "name": "Height", "required":
+    true}, {"type": "double", "name": "Weight", "required": true}, {"type": "long",
+    "name": "family_history", "required": true}, {"type": "long", "name": "FAVC",
+    "required": true}, {"type": "double", "name": "FCVC", "required": true}, {"type":
+    "double", "name": "NCP", "required": true}, {"type": "long", "name": "CAEC", "required":
+    true}, {"type": "long", "name": "SMOKE", "required": true}, {"type": "double",
+    "name": "CH2O", "required": true}, {"type": "long", "name": "SCC", "required":
+    true}, {"type": "double", "name": "FAF", "required": true}, {"type": "double",
+    "name": "TUE", "required": true}, {"type": "long", "name": "CALC", "required":
+    true}, {"type": "long", "name": "MTRANS", "required": true}]'
+  outputs: '[{"type": "tensor", "tensor-spec": {"dtype": "int64", "shape": [-1]}}]'
+  params: null
+utc_time_created: '2025-12-05 02:42:03.818850'

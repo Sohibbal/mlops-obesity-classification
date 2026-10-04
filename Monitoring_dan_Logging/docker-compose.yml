@@ -1,0 +1,82 @@
+version: "3.9"
+
+services:
+  # ===========================
+  # ML MODEL SERVICE
+  # ===========================
+  model-service:
+    image: "sohibbal/obesity-classification:latest"
+    container_name: model-service
+    ports:
+      - "5000:8080"
+    networks:
+      - monitoring
+
+  # ===========================
+  # PROMETHEUS EXPORTER SERVICE
+  # ===========================
+  metrics-exporter:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: metrics-exporter
+    ports:
+      - "8000:8000"
+      - "5001:5001"
+    depends_on:
+      - model-service
+    networks:
+      - monitoring
+
+  # ===========================
+  # PROMETHEUS
+  # ===========================
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    environment:
+      - TZ=Asia/Jakarta
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus_data:/prometheus
+      - /etc/localtime:/etc/localtime:ro
+    ports:
+      - "9090:9090"
+    depends_on:
+      - metrics-exporter
+    networks:
+      - monitoring
+
+  # ===========================
+  # GRAFANA
+  # ===========================
+  grafana:
+    image: grafana/grafana-oss:latest
+    container_name: grafana
+    ports:
+      - "3001:3000"
+    depends_on:
+      - prometheus
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_ADMIN_PASSWORD}
+      - TZ=${TIMEZONE}
+      - GF_SMTP_ENABLED=true
+      - GF_SMTP_HOST=${GF_SMTP_HOST}
+      - GF_SMTP_USER=${GF_SMTP_USER}
+      - GF_SMTP_PASSWORD=${GF_SMTP_PASSWORD}
+      - GF_SMTP_STARTTLS=true
+      - GF_SMTP_FROM_ADDRESS=${GF_SMTP_FROM_ADDRESS}
+      - GF_SMTP_FROM_NAME=${GF_SMTP_FROM_NAME}
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - /etc/localtime:/etc/localtime:ro
+    networks:
+      - monitoring
+
+networks:
+  monitoring:
+    driver: bridge
+
+volumes:
+  grafana_data:
+  prometheus_data:
